@@ -2,7 +2,7 @@
 #include "cprint.h"
 using namespace std;
 
-#define WORKPATH "D:\\Simple Workspace\\Tools\\"
+#define WORKPATH ".\\"
 
 typedef unsigned short uint16;
 typedef unsigned long long uint64;
@@ -198,8 +198,8 @@ void import(string name) {
   string filename (string(WORKPATH".reciteword\\") + name + ".txt");
   ifstream fin (filename);
   if (!fin) {
-    cprintf("[´íÎó]", fontcolor::Red | fontcolor::Intensity);
-    cout << " ´ò¿ªÎÄ¼þÊ§°Ü" << endl;
+    cprintf("[é”™è¯¯]", fontcolor::Red | fontcolor::Intensity);
+    cout << " æ‰“å¼€æ–‡ä»¶å¤±è´¥" << endl;
     pause();
     return;
   }
@@ -219,8 +219,8 @@ void save0() {
   string filename (string(WORKPATH".reciteword\\") + current_list + ".txt");
   ofstream fout (filename);
   if (!fout) {
-    cprintf("[´íÎó]", Red | Intensity);
-    cout << " ±£´æÊ§°Ü£¬Çë¼ì²éÄ¿Â¼ºÍÎÄ¼þ" << endl;
+    cprintf("[é”™è¯¯]", Red | Intensity);
+    cout << " ä¿å­˜å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç›®å½•å’Œæ–‡ä»¶" << endl;
     pause();
     return;
   }
@@ -236,16 +236,16 @@ void load(string name) {
   string filename (string(WORKPATH".reciteword\\") + name + ".dat");
   ifstream fin (filename, ios::binary);
   if (!fin) {
-    cprintf("[´íÎó]", Red | Intensity);
-    cout << " ÎÄ¼þ²»´æÔÚ" << endl;
+    cprintf("[é”™è¯¯]", Red | Intensity);
+    cout << " æ–‡ä»¶ä¸å­˜åœ¨" << endl;
     pause();
     return;
   }
   int version;
   fin.read((char*) &version, sizeof(version));
   if (version != ::version) {
-    cprintf("[¾¯¸æ]", Red | Green | Intensity);
-    cout << " Ö÷³ÌÐò°æ±¾²»Í¬£¬Õâ¸ö°æ±¾¿ÉÄÜÒÑ¾­²»ÊÜµ½Ö§³ÖÁË" << endl;
+    cprintf("[è­¦å‘Š]", Red | Green | Intensity);
+    cout << " ä¸»ç¨‹åºç‰ˆæœ¬ä¸åŒï¼Œè¿™ä¸ªç‰ˆæœ¬å¯èƒ½å·²ç»ä¸å—åˆ°æ”¯æŒäº†" << endl;
   }
   int num;
   fin.read((char*) &num, sizeof(num));
@@ -261,8 +261,8 @@ void save(string name) {
   string filename (string(WORKPATH".reciteword\\") + name + ".dat");
   ofstream fout (filename, ios::binary);
   if (!fout) {
-    cprintf("[´íÎó]", Red | Intensity);
-    cout << " ±£´æÊ§°Ü£¬Çë¼ì²éÄ¿Â¼ºÍÎÄ¼þ" << endl;
+    cprintf("[é”™è¯¯]", Red | Intensity);
+    cout << " ä¿å­˜å¤±è´¥ï¼Œè¯·æ£€æŸ¥ç›®å½•å’Œæ–‡ä»¶" << endl;
     pause();
     return;
   }
@@ -279,8 +279,8 @@ void save(string name) {
 void do_recite() {
   using namespace fontcolor;
   if (!G.size()) {
-    cprintf("[´íÎó]", Red | Intensity);
-    cout << " ÕÒ²»µ½µ¥´Ê" << endl;
+    cprintf("[é”™è¯¯]", Red | Intensity);
+    cout << " æ‰¾ä¸åˆ°å•è¯" << endl;
     pause();
     return;
   }
@@ -312,7 +312,7 @@ void do_recite() {
       ac++;
     } else {
       cprintf("Wrong Answer", fontcolor::Red | Intensity);
-      cout << ", ÕýÈ·´ð°¸: " << w.key;
+      cout << ", æ­£ç¡®ç­”æ¡ˆ: " << w.key;
     }
     cout << endl;
     pause();
@@ -341,8 +341,8 @@ int main() {
           pause();
           save_flag = false;
         } catch (out_of_range) {
-          cprintf("[´íÎó] ", Red | Intensity);
-          cout << "Çë¼ì²éÊäÈë£¬ÓÃ·¨£ºimport [ÎÄ¼þÖ÷Ãû]" << endl;
+          cprintf("[é”™è¯¯] ", Red | Intensity);
+          cout << "è¯·æ£€æŸ¥è¾“å…¥ï¼Œç”¨æ³•ï¼šimport [æ–‡ä»¶ä¸»å]" << endl;
           pause();
         }
       } else if (cm == "save0") {
@@ -351,8 +351,8 @@ int main() {
         try {
           save(lines.substr(5));
         } catch (out_of_range) {
-          cprintf("[´íÎó] ", Red | Intensity);
-          cout << "Çë¼ì²éÊäÈë£¬ÓÃ·¨£ºsave [ÎÄ¼þÖ÷Ãû]" << endl;
+          cprintf("[é”™è¯¯] ", Red | Intensity);
+          cout << "è¯·æ£€æŸ¥è¾“å…¥ï¼Œç”¨æ³•ï¼šsave [æ–‡ä»¶ä¸»å]" << endl;
           pause();
         }
       } else if (cm == "load") {
@@ -360,13 +360,13 @@ int main() {
           load(lines.substr(5));
           save_flag = false;
         } catch (out_of_range) {
-          cprintf("[´íÎó] ", Red | Intensity);
-          cout << "Çë¼ì²éÊäÈë£¬ÓÃ·¨£ºload [ÎÄ¼þÖ÷Ãû]" << endl;
+          cprintf("[é”™è¯¯] ", Red | Intensity);
+          cout << "è¯·æ£€æŸ¥è¾“å…¥ï¼Œç”¨æ³•ï¼šload [æ–‡ä»¶ä¸»å]" << endl;
           pause();
         }
       } else if (cm == "exit") {
         if (!save_flag) {
-          cout << "Äã»¹Ã»ÓÐ±£´æ£¬ÊÇ·ñÈ·¶¨ÍË³ö£¿(Y/N) ";
+          cout << "ä½ è¿˜æ²¡æœ‰ä¿å­˜ï¼Œæ˜¯å¦ç¡®å®šé€€å‡ºï¼Ÿ(Y/N) ";
           char c;
           cin >> c;
           if (c == 'Y') {
@@ -377,9 +377,9 @@ int main() {
         }
       } else if (cm == "set") {
         string a, b;
-        cout << "µ¥´Ê ";
+        cout << "å•è¯ ";
         getline(cin, a);
-        cout << "º¬Òå ";
+        cout << "å«ä¹‰ ";
         getline(cin, b);
         G.update(Word(a, b));
         save_flag = false;
@@ -391,15 +391,15 @@ int main() {
         pause();
       } else if (cm == "remove") {
         string a, b;
-        cout << "µ¥´Ê ";
+        cout << "å•è¯ ";
         getline(cin, a);
-        cout << "º¬Òå ";
+        cout << "å«ä¹‰ ";
         getline(cin, b);
         G.erase(Word(a, b));
         save_flag = false;
       }
     } catch (exception e) {
-      cprintf("[´íÎó] ", Red | Intensity);
+      cprintf("[é”™è¯¯] ", Red | Intensity);
       cerr << e.what() << endl;
     }
   }
