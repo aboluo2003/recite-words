@@ -345,8 +345,14 @@ int main() {
           cout << "请检查输入，用法：import [文件主名]" << endl;
           pause();
         }
-      } else if (cm == "save0") {
-        save0();
+      }  else if (cm == "save0") {
+        try {
+          save0(lines.substr(6));
+        } catch (out_of_range) {
+          cprintf("[错误] ", Red | Intensity);
+          cout << "请检查输入，用法：save0 [文件主名]" << endl;
+          pause();
+        }
       } else if (cm == "save") {
         try {
           save(lines.substr(5));
